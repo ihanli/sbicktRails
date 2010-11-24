@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#logo{
+  width: 415px;
+  margin: 10px auto;
+}
+
+h2{
+	text-align:center;
+}
