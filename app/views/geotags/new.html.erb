@@ -1,0 +1,19 @@
+<h1>Insert new geotag</h1>
+
+<%= form_for(@new_geotag) do |f| %>
+  <p>
+    <%= f.label 'x coordinate' %> <br />
+	<%= f.text_field :x %>
+  </p>
+  <p>
+    <%= f.label 'y coordinate' %> <br />
+	<%= f.text_field :y %>
+  </p>
+  <p>
+    <%= f.label 'z coordinate' %> <br />
+	<%= f.text_field :z %>
+  </p>
+  <p>
+    <%= f.submit 'bicks' %>
+  </p>
+<% end %>

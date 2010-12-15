@@ -1,0 +1,9 @@
+<h1>Geotags</h1>
+
+<ol id="geotags">
+  <% @geotags.each do |geotag| %>
+    <li>
+	  <%= geotag.x %>, <%= geotag.y %>, <%= geotag.z %>
+	</li>
+  <% end %>
+</ol>
