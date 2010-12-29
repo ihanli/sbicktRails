@@ -2,7 +2,7 @@ xml.instruct!
 xml.kml(:xmlns => "http://www.opengis.net/kml/2.2") do
 
   @geotags.each do |geotag|
-    xml.Placemark {
+    xml.Placemark (:id => geotag.id.to_s) {
       xml.name("test")
 	  xml.description("testing builder in rails")
 	  xml.Point {
