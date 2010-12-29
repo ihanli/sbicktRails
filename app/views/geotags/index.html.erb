@@ -2,9 +2,14 @@
 
 <ol id="geotags">
   <% @geotags.each do |geotag| %>
-    <li>
-	  <%= geotag.x %>, <%= geotag.y %>, <%= geotag.z %>
-	  <%= link_to 'Delete', geotag, :confirm => 'Are you sure?', :method => :delete %>
-	</li>
+  	<% geotag.sbickerls.each do |sbickerl| %>
+      <li>
+      	<%= sbickerl.owner %> <br />
+      	<%= sbickerl.content %> <br />
+      	<%= sbickerl.visibility %> <br />
+	    <%= geotag.x %>, <%= geotag.y %>, <%= geotag.z %> <br />
+	    <%= link_to 'Delete', geotag, :method => :delete %>
+	  </li>
+	 <% end %>
   <% end %>
 </ol>
