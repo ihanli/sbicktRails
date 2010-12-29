@@ -4,6 +4,7 @@
   <% @geotags.each do |geotag| %>
     <li>
 	  <%= geotag.x %>, <%= geotag.y %>, <%= geotag.z %>
+	  <%= link_to 'Delete', geotag, :confirm => 'Are you sure?', :method => :delete %>
 	</li>
   <% end %>
 </ol>

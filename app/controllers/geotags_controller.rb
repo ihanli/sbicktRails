@@ -21,7 +21,7 @@ class GeotagsController < ApplicationController
     end
   end
   
-  def delete
+  def destroy
     Geotag.find(params[:id]).destroy
     redirect_to geotags_path
   end
