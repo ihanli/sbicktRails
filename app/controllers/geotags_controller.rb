@@ -1,12 +1,14 @@
 class GeotagsController < ApplicationController
 
   def index 
-    @geotags = Geotag.all
-    @sbickerls = Sbickerl.all
+    @geotags = Geotag.all 
+  end
+  
+  def list
+    @geotags = Geotag.find(:all, :conditions => ['(x - ? < 0.45 AND x - ? > -0.45) AND (y - ? < 0.45 AND y - ? > -0.45)', params[:coordinates][:x].to_f, params[:coordinates][:x].to_f, params[:coordinates][:y].to_f, params[:coordinates][:y].to_f])
   
     respond_to do |format|
-	    format.html
-	    format.kml
+     format.kml
     end
   end
   
