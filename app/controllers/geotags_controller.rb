@@ -24,10 +24,13 @@
 # along with s'bickt.  If not, see <http://www.gnu.org/licenses/>.              #
 #################################################################################
 
-class GeotagsController < ApplicationController
-
+class GeotagsController < ApplicationController 
   def index 
-    @geotags = Geotag.all 
+    @geotags = Geotag.all
+    
+    respond_to do |format|
+     format.kml
+    end 
   end
   
   def list
@@ -55,8 +58,5 @@ class GeotagsController < ApplicationController
   def destroy
     Geotag.find(params[:id]).destroy
     redirect_to geotags_path
-  end
-  
-  def show
   end
 end

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>s'bickt</title>
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<!--
+<script type="text/javascript" src="js/tinyscrolling.js"></script>
+-->
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+
+
+
+<script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+
+</head>
+
+<body>
+<div id="content">
+<div id="BG">
+<ul id="contentlist">
+
+<li id="section_magauch">
+<div id="magauch"></div>
+<div id="anmelden_formular">
+<form method="POST" action="" name="anmelden">
+                    
+                        <table>
+                          <tr>
+                            <td>Vorname:</td>
+                            <td><input type="text" size="16" name="vorname" class="feld"></td>
+                          </tr>
+                          <tr>
+                            <td>Nachname:</td>
+                            <td><input type="text" size="16" name="nachname" class="feld"></td>
+                          </tr>
+                          <tr>
+                            <td>Nickname:</td>
+                            <td><input type="text" size="16" name="nickname" class="feld"></td>
+                          </tr>
+                          <tr>
+                            <td>Passwort:</td>
+                            <td><input type="password" size="16" name="pw" class="feld"></td>
+                          </tr>
+                          <tr>
+                            <td>Passwort Wiederholung:</td>
+                            <td><input type="password" size="16" name="pw2" class="feld"></td>
+                          </tr>  
+                          <tr>
+                            <td>mail:</td>
+                            <td><input type="text" size="16" name="email" class="feld"></td>
+                          </tr>   
+                         
+                          <tr>
+                          	<td colspan="2" align="right">
+							<br />
+                          	<input type="submit" value="Absenden" name="submit">
+                        	</td>
+                      	</tr>
+                    </table>
+                   </form>
+</div> <!-- end formular -->
+</li> <!-- end section -->
+
+
+
+<li id="section_wo">
+<div id="wo"></div>
+<div id="map">karte von umgebung</div>
+</li><!-- end section -->
+
+<li id="section_wie">
+<div id="wie"></div>
+</li><!-- end section -->
+
+
+<li id="section_wurzeln">
+<div id="wurzeln"></div>
+<div id="wurzeln_text">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+</p>
+</div>
+</li><!-- end section -->
+
+
+</ul>
+
+</div><!-- end BG -->
+
+<div id="start">
+
+</div><!-- end start -->
+
+</div> <!-- end content-->
+
+<ul id="start_links">
+	<li><a href="#section_wurzeln">wtf ist s'bickt?</a></li>
+	<li><a href="#section_wie">wie bickt man's? </a></li>
+	<li><a href="#section_wo">wo bickt's? </a></li>
+	<li><a href="#section_magauch">will auch!</a></li>
+</ul>
+
+</body>
+</html>
+
+<!--
+<ul>
+<li><a href="#topofpage" class="back-to-top">Nach oben</a></li>
+<li><a href="#second">Second Paragraph</a></li>
+<li><a href="#third">Third Paragraph</a></li>
+<li><a href="#fourth">Fourth Paragraph</a></li>
+<li><a href="#fifth">Fifth Paragraph</a></li>
+<li><a href="#sixth">Sixth Paragraph</a></li>
+<li><a href="#seventh">Seventh Paragraph</a></li>
+
+
+<a href="#" onclick="$.scrollTo('#BILD', {duration: 1000}); return false;">LINK</a>
+//$('#BG').scrollTo();//all divs w/class pane
+</ul> 
+
+
+ onload="location.href='#start'"
+ -->

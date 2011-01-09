@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229160536) do
+ActiveRecord::Schema.define(:version => 20110108210335) do
 
   create_table "geotags", :force => true do |t|
     t.float    "x"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(:version => 20101229160536) do
     t.string   "owner"
     t.text     "content"
     t.string   "visibility"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "lastname"
+    t.string   "firstname"
+    t.string   "nickname"
+    t.string   "hashed_password"
+    t.string   "email"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -24,12 +24,19 @@
 # along with s'bickt.  If not, see <http://www.gnu.org/licenses/>.              #
 #################################################################################
 
-SbicktRails::Application.routes.draw do
- resources :geotags do
+SbicktRails::Application.routes.draw do  
+  resources :users do
     collection do
-      get :list
+      get :logout
+      post :login
     end
+  end
+
+  resources :geotags do
+     collection do
+       get :list
+     end
     
-    resources :sbickerls
+     resources :sbickerls
   end
 end
