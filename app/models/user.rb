@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
       return nil
     end
     
+    return unless u
+    
     if User.encrypt(pass, u.salt) == u.hashed_password
       return u
     end
