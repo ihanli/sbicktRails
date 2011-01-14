@@ -27,6 +27,8 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  has_many :sbickerls
+  
   validates_length_of :nickname, :within => 3..40
   validates_length_of :password, :within => 5..40
   validates_uniqueness_of :nickname, :email
