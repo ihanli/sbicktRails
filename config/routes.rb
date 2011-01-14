@@ -39,4 +39,7 @@ SbicktRails::Application.routes.draw do
     
      resources :sbickerls
   end
+  
+  resources :sbickerls
+  
 end
