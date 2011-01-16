@@ -9,8 +9,11 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  def create_isi()
+  def create_isi
     return User.new(:nickname => "ihanli", :email => "ihanli@sbickt.com", :password => "braverAlex", :password_confirmation => "braverAlex")
   end
-  # Add more helper methods to be used by all tests here...
+
+  def create_valid_sbickerl
+    return Sbickerl.new(:content => "some content", :visibility => "private")
+  end
 end

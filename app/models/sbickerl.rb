@@ -25,7 +25,10 @@
 #################################################################################
 
 class Sbickerl < ActiveRecord::Base
-  attr_accessible :owner, :content, :visibility
-  has_one :geotag
-  belongs_to :user, :dependent => :destroy
+  attr_accessible :content, :visibility
+  has_one :geotag, :dependent => :destroy
+  belongs_to :user
+  
+  validates_length_of :content, :within => 1..140
+  validates_inclusion_of :visibility, :in => %w(private protected public), :message => "visibility not allowed"
 end
