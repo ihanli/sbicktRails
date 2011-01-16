@@ -30,11 +30,12 @@ class GeotagsController < ApplicationController
     
     respond_to do |format|
      format.kml
+     format.html
     end 
   end
   
   def list
-    @geotags = Geotag.find(:all, :conditions => ['(x - ? < 0.45 AND x - ? > -0.45) AND (y - ? < 0.45 AND y - ? > -0.45)', params[:coordinates][:x].to_f, params[:coordinates][:x].to_f, params[:coordinates][:y].to_f, params[:coordinates][:y].to_f])
+    @geotags = Geotag.surrounding_tags(params[:lat].to_f, params[:lng].to_f)
   
     respond_to do |format|
      format.kml

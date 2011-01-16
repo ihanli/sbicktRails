@@ -24,7 +24,8 @@
 # along with s'bickt.  If not, see <http://www.gnu.org/licenses/>.              #
 #################################################################################
 
-class Sbickerl < ActiveRecord::Base
-  attr_accessible :owner, :content, :visibility
-  has_one :geotag
+class SbickerlsController < ApplicationController
+  def index
+    @sbickerls = Sbickerl.all
+  end
 end

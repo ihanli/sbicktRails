@@ -10,14 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108210335) do
+ActiveRecord::Schema.define(:version => 20110113161740) do
 
   create_table "geotags", :force => true do |t|
-    t.float    "x"
-    t.float    "y"
-    t.float    "z"
+    t.float    "lat"
+    t.float    "lng"
+    t.float    "alt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "object_id"
   end
 
   create_table "sbickerls", :force => true do |t|

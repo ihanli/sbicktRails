@@ -1,0 +1,15 @@
+<h1>geotag</h1>
+
+<p><%= link_to "Neu", new_geotag_path() %></p>
+
+<ul>
+  <% @geotags.each do |geotag| %>
+    <li>
+      <%= geotag.x %>
+      <%= geotag.y %>
+      <%= geotag.z %>
+      <%= geotag.sbickerls %>
+      <%= link_to "edit", edit_geotag_path(geotag) %>
+    </li>
+  <% end %>
+</ul>

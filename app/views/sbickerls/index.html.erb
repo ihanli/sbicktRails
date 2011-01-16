@@ -1,0 +1,14 @@
+<h1>Sbickerl</h1>
+
+<p><%= link_to "Neu", new_sbickerl_path() %></p>
+
+<ul>
+  <% @sbickerls.each do |sbickerl| %>
+    <li>
+      <%= sbickerl.content %>
+      <%= sbickerl.owner %>
+      <%= link_to "edit", edit_sbickerl_path(sbickerl) %>
+      <%= link_to 'delete', sbickerl, :confirm => 'Are you sure?', :method => :delete %>
+    </li>
+  <% end %>
+</ul>
