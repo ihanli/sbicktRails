@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  x: 1.5
-  y: 1.5
-  z: 1.5
+  lat: 1.5
+  lng: 1.5
+  alt: 1.5
 
 two:
-  x: 1.5
-  y: 1.5
-  z: 1.5
+  lat: 1.5
+  lng: 1.5
+  alt: 1.5

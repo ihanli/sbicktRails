@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114120158) do
+ActiveRecord::Schema.define(:version => 20110114172713) do
 
   create_table "geotags", :force => true do |t|
     t.float    "lat"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110114120158) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",           :default => false
   end
 
 end
