@@ -27,22 +27,22 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  has_many :sbickerls
+  
   validates_length_of :nickname, :within => 3..40
   validates_length_of :password, :within => 5..40
   validates_uniqueness_of :nickname, :email
   validates_confirmation_of :password
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => "Invalid email"  
 
-  attr_protected :id, :salt
+  attr_accessible :nickname, :firstname, :lastname, :email, :password
 
-  attr_accessor :password, :password_confirmation
+  attr_accessor :password
   
   def self.authenticate(nickname, pass)
     u = find(:first, :conditions => ["nickname = ?", nickname])
-      
-    if u.nil?
-      return nil
-    end
+    
+    return unless u
     
     return unless u
     
@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
       return u
     end
     
-    nil
+    return nil
   end  
   
   def password=(pass)
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     end
 
     self.hashed_password = User.encrypt(@password, self.salt)
+  end
+  
+  def self.admin?()
+    return self.admin
   end
 
   protected

@@ -27,4 +27,6 @@
 class Sbickerl < ActiveRecord::Base
   attr_accessible :owner, :content, :visibility
   has_one :geotag
+
+  belongs_to :user, :dependent => :destroy
 end

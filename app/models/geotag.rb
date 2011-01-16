@@ -26,7 +26,12 @@
 
 class Geotag < ActiveRecord::Base
   attr_accessible :lat, :lng, :alt
-  belongs_to :sbickerl, :dependent => :destroy, foreign_key => "object_id"
+
+  belongs_to :sbickerl, :dependent => :destroy, :foreign_key => "object_id"
+  
+  validates_presence_of :lat
+  validates_presence_of :lng
+  validates_presence_of :alt
   
   def self.surrounding_tags(lat, lng)
     return self.find(:all, :conditions => ['(lat - ? < 0.45 AND lat - ? > -0.45) AND (lng - ? < 0.45 AND lng - ? > -0.45)', lat, lat, lng, lng])
