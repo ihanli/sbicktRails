@@ -16,4 +16,8 @@ class ActiveSupport::TestCase
   def create_valid_sbickerl
     return Sbickerl.new(:content => "some content", :visibility => "private")
   end
+
+  def create_valid_geotag
+    return Geotag.new(:lat => 2.4, :lng => 3.6, :alt => 4.8)
+  end
 end

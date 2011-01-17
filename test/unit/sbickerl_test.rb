@@ -28,19 +28,34 @@ class SbickerlTest < ActiveSupport::TestCase
     assert !Sbickerl.new(:content => "invalid visibility", :visibility => "invalid").save, "saved sbickerl with invalid visibility"
   end
   
-  test "check user dependency" do
+  test "check user - sbickerl - geotag dependency" do
     isi = create_isi
     isi.save
     
-    sbickerl = create_valid_sbickerl
-    sbickerl.user = isi
-    sbickerl.save
+    geotag1 = geotag2 = create_valid_geotag
+    geotag1.save
+    geotag2.save
     
-    assert_equal isi.id, sbickerl.user.id
+    sbickerl2 = sbickerl1 = create_valid_sbickerl
+    sbickerl2.user = sbickerl1.user = isi
+    sbickerl1.geotag = geotag1
+    sbickerl2.geotag = geotag2
+    sbickerl1.save
+    sbickerl2.save
+    
+    assert_equal isi.id, sbickerl1.user.id, "dependency problem between user and sbickerl1"
+    assert_equal isi.id, sbickerl2.user.id, "dependency problem between user and sbickerl2"
+    
+    assert_equal geotag1.id, sbickerl1.geotag.id, "dependency problem between geotag1 and sbickerl1"
+    assert_equal geotag2.id, sbickerl2.geotag.id, "dependency problem between geotag2 and sbickerl2"
     
     isi.destroy
     
-    assert_nil Sbickerl.find_by_id(sbickerl.id), "sbickerl wasn't deleted"
+    assert_nil Sbickerl.find_by_id(sbickerl1.id), "sbickerl1 wasn't deleted"
+    assert_nil Sbickerl.find_by_id(sbickerl2.id), "sbickerl2 wasn't deleted"
+    
+    assert_nil Geotag.find_by_id(geotag1.id), "geotag1 wasn't deleted"
+    assert_nil Geotag.find_by_id(geotag2.id), "geotag2 wasn't deleted"
   end
 
 end
