@@ -64,23 +64,32 @@ $(document).ready(function(){
 	window.location.href = "index.html#start";
 	    
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var yourLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			
-            var options = {
-				center: yourLocation,
-                zoom: 13,
-                mapTypeControl: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            
-            var map = new google.maps.Map(document.getElementById("map"), options);
-
-			var sbicktLayer = new google.maps.KmlLayer("http://sbickt.heroku.com/geotags/list.kml?coordinates[x]=" + position.coords.latitude + "&coordinates[y]=" + position.coords.longitude);
-			sbicktLayer.setMap(map);
-		});
-    }
+		navigator.geolocation.getCurrentPosition(function(position){
+			initMap(position.coords.latitude, position.coords.longitude);
+		}, handleNoGeoLocation);
+	}
 });
+
+function initMap(lat, lng){
+	var yourLocation = new google.maps.LatLng(lat, lng);
+	
+	var options = {
+		center: yourLocation,
+        zoom: 13,
+        mapTypeControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+    var map = new google.maps.Map(document.getElementById("map"), options);
+
+ //   var sbicktLayer = new google.maps.KmlLayer("http://sbickt.heroku.com/geotags/list.kml?coordinates[x]=" + lat + "&coordinates[y]=" + lng);
+ //   sbicktLayer.setMap(map);
+}
+
+function handleNoGeoLocation(){
+	initMap(47.716667, 13.094444);
+}
+
 </script>
 </head>
 
