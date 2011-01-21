@@ -60,4 +60,10 @@ class GeotagsController < ApplicationController
     Geotag.find(params[:id]).destroy
     redirect_to geotags_path
   end
+  
+  def count
+    count = Geotag.count
+    
+    render :json => {:status => 'ok', :count => count}
+  end
 end

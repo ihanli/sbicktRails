@@ -35,6 +35,7 @@ SbicktRails::Application.routes.draw do
   resources :geotags do
      collection do
        get :list
+       get :count
      end
     
      resources :sbickerls
