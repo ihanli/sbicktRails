@@ -68,6 +68,9 @@ $(document).ready(function(){
 			initMap(position.coords.latitude, position.coords.longitude);
 		}, handleNoGeoLocation);
 	}
+	else{
+		handleNoGeoLocation();
+	}
 });
 
 function initMap(lat, lng){
