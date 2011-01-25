@@ -27,21 +27,41 @@
 */
 
 var sbicktCounter;
+var requestURL = "http://localhost:3000/geotags/count";
+var currentTarget = 0;
 
 var initCounter = function() {
-	sbicktCounter = new flipCounter('counter', {
-		value : 0,
-		pace : 800,
-		auto : false
+	var count = 0;
+
+	$.getJSON(requestURL, function(json) {
+		if (json.status == 'ok') {
+			count = json.count;
+		}
+		
+		sbicktCounter = new flipCounter('counter', {
+			value : count,
+			pace : 100,
+			auto : false
+		});
 	});
 };
 
 var refreshCounter = function() {
-	$.getJSON("http://localhost:3000/geotags/count", function(json) {
+	$.getJSON(requestURL, function(json) {
 		if (json.status == 'ok') {
-			sbicktCounter.setValue(json.count);
+			if(currentTarget != json.count){
+				currentTarget = json.count;
+				
+				intervalId = setInterval(function() {
+					currentValue = sbicktCounter.getValue();
+					if (currentValue < 50)
+						sbicktCounter.setValue(currentValue + 1);
+					else
+						clearInterval(intervalId);
+				}, 250);
+			}
 		}
-		else{
+		else {
 			sbicktCounter.setValue(0);
 		}
 	});

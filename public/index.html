@@ -77,8 +77,8 @@ $(document).ready(function(){
     });
 	
     initCounter();
-    
-    setTimeout("refreshCounter()", 5000);
+
+    setInterval("refreshCounter()", 5000);
 	    
     if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position){
