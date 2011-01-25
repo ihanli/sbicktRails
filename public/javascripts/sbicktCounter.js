@@ -37,7 +37,7 @@ var initCounter = function() {
 };
 
 var refreshCounter = function() {
-	$.getJSON("http://localhost:3001/geotags/count", function(json) {
+	$.getJSON("http://localhost:3000/geotags/count", function(json) {
 		if (json.status == 'ok') {
 			sbicktCounter.setValue(json.count);
 		}
