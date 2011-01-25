@@ -61,8 +61,13 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypt(@password, self.salt)
   end
   
-  def self.admin?()
+  def admin?()
     return self.admin
+  end
+  
+  def make_admin!(value)
+    self.admin = value
+    self.save
   end
 
   protected

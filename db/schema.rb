@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110116191443) do
+ActiveRecord::Schema.define(:version => 20110125161827) do
 
   create_table "geotags", :force => true do |t|
     t.float    "lat"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(:version => 20110116191443) do
     t.float    "alt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "sbickerl_id"
   end
 
   create_table "sbickerls", :force => true do |t|
@@ -27,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20110116191443) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "geotag_id"
   end
 
   create_table "users", :force => true do |t|

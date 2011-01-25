@@ -12,12 +12,16 @@ class ActiveSupport::TestCase
   def create_isi
     return User.new(:nickname => "ihanli", :email => "ihanli@sbickt.com", :password => "braverAlex", :password_confirmation => "braverAlex")
   end
+  
+  def create_admin
+    return User.new(:nickname => "admin", :email => "admin@sbickt.com", :password => "braverAdmin", :password_confirmation => "braverAdmin", :admin => true)
+  end
 
-  def create_valid_sbickerl
+  def create_sbickerl
     return Sbickerl.new(:content => "some content", :visibility => "private")
   end
 
-  def create_valid_geotag
+  def create_geotag
     return Geotag.new(:lat => 2.4, :lng => 3.6, :alt => 4.8)
   end
 end

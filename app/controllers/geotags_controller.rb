@@ -51,11 +51,9 @@ class GeotagsController < ApplicationController
   end
   
   def create
-    puts "in"
     @new_geotag = Geotag.new(params[:geotag])
-    @new_sbickerl = Sbickerl.new(params[:sbickerl])
-    @new_geotag.sbickerl = @new_sbickerl
-    #@new_sbickerl = @new_geotag.sbickerls.build(params[:sbickerl])
+    @new_geotag.sbickerl = Sbickerl.new(params[:sbickerl])
+    @new_geotag.sbickerl.user = User.find_by_id(session[:user_id])
       
     if @new_geotag.save
       flash[:message] = "successfully created geotag and sbickerl"

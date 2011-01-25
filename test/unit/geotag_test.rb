@@ -3,7 +3,7 @@ require 'test_helper'
 class GeotagTest < ActiveSupport::TestCase
   
   test "valid geotag" do
-    assert create_valid_geotag.valid?, "sbickerl no valid"
+    assert create_geotag.valid?, "sbickerl no valid"
   end
   
   test "shouldn't save geotag without lat, lng or alt" do
@@ -13,8 +13,8 @@ class GeotagTest < ActiveSupport::TestCase
   end
   
   test "check geotag - sbickerl dependency" do
-    geotag = create_valid_geotag
-    geotag.sbickerl = sbickerl = create_valid_sbickerl
+    geotag = create_geotag
+    geotag.sbickerl = sbickerl = create_sbickerl
     
     sbickerl.save
     geotag.save

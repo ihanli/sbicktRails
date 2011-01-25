@@ -25,7 +25,8 @@
 #################################################################################
 
 class UsersController < ApplicationController
-  before_filter :login_required, :only => ["show", "logout"]
+  before_filter :login_required, :only => ["show", "logout, destroy"]
+  before_filter :admin_rights_required, :only => ["index", "create"]
     
   def index
     @users = User.all
@@ -69,7 +70,20 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to :action => :index
+    if current_user.admin?
+      if User.find_by_id(params[:id]).destroy
+        flash[:message] = 'User destroyed'
+        redirect_to :action => :index
+      else
+        flash[:warning] = 'couldn\'t destroy user'
+      end
+    else
+      if current_user.destroy
+        flash[:message] = 'Your account was deleted'
+        redirect_to "/index.html#start"
+      else
+        flash[:warning] = 'We weren\'t able to delete your account'
+      end
+    end
   end
 end

@@ -3,25 +3,54 @@ require 'test_helper'
 class SbickerlTest < ActiveSupport::TestCase
   
   test "valid sbickerl" do
-    assert create_valid_sbickerl.valid?, "sbickerl no valid"
+    isi = create_isi
+    isi.save
+    
+    geotag = create_geotag
+    geotag.save
+    
+    sbickerl = create_sbickerl
+    sbickerl.user = isi
+    sbickerl.geotag = geotag
+    
+    assert sbickerl.valid?, "sbickerl not valid"
   end
   
   test "shouldn't save sbickerl with too long content" do
-    sbickerl = create_valid_sbickerl
+    sbickerl = create_sbickerl
     sbickerl.content = (0...141).map{ ('a'..'z').to_a[rand(26)] }.join
     assert !sbickerl.save, "saved sbickerl with too long content"
   end
   
   test "shouldn't save sbickerl with too short content" do
-    sbickerl = create_valid_sbickerl
+    sbickerl = create_sbickerl
     sbickerl.content = ""
     assert !sbickerl.save, "saved sbickerl with too short content"
   end
   
   test "valid visibilities" do
-    assert Sbickerl.new(:content => "private", :visibility => "private").valid?, "visibility private not valid"
-    assert Sbickerl.new(:content => "protected", :visibility => "protected").valid?, "visibility protected not valid"
-    assert Sbickerl.new(:content => "public", :visibility => "public").valid?, "visibility public not valid"
+    isi = create_isi
+    isi.save
+    
+    geotag1 = create_geotag
+    geotag1.save
+    geotag2 = create_geotag
+    geotag2.save
+    geotag3 = create_geotag
+    geotag3.save
+    
+    sbickerl1 =  Sbickerl.new(:content => "private", :visibility => "private")
+    sbickerl1.user = isi
+    sbickerl1.geotag = geotag1
+    assert sbickerl1.valid?, "visibility private not valid"
+    sbickerl2 =  Sbickerl.new(:content => "protected", :visibility => "protected")
+    sbickerl2.user = isi
+    sbickerl2.geotag = geotag2
+    assert sbickerl1.valid?, "visibility protected not valid"
+    sbickerl3 =  Sbickerl.new(:content => "public", :visibility => "public")
+    sbickerl3.user = isi
+    sbickerl3.geotag = geotag3
+    assert sbickerl1.valid?, "visibility public not valid"
   end
   
   test "shouldn't save sbickerl with invalid visibility" do
@@ -32,11 +61,11 @@ class SbickerlTest < ActiveSupport::TestCase
     isi = create_isi
     isi.save
     
-    geotag1 = geotag2 = create_valid_geotag
+    geotag1 = geotag2 = create_geotag
     geotag1.save
     geotag2.save
     
-    sbickerl2 = sbickerl1 = create_valid_sbickerl
+    sbickerl2 = sbickerl1 = create_sbickerl
     sbickerl2.user = sbickerl1.user = isi
     sbickerl1.geotag = geotag1
     sbickerl2.geotag = geotag2
