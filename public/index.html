@@ -36,12 +36,11 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
 <link rel="stylesheet" type="text/css" href="stylesheets/base.css" />
-<link rel="stylesheet" type="text/css" href="stylesheets/counter.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/screen.css" />
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="javascripts/tinyscrolling.js"></script>
-<script type="text/javascript" src="javascripts/flipcounter.js"></script>
-<script type="text/javascript" src="javascripts/sbicktCounter.js"></script>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+<script type="text/javascript" src="javascripts/easySlider1.7.js"></script>
 <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAwdm-kBv7vvDxtCmjbI_0bxTw8RN_SnyOESMS_o_iXwJdZWIUiRRIlICMZS57BMW6BBC5DaE1Uob0Yw"></script>
 
  <script type="text/javascript">
@@ -65,14 +64,43 @@
 -->
 <script type="text/javascript">
 $(document).ready(function(){
-
-    if (window.location.pathname == "/" || (window.location.pathname == "/index.html" && window.location.hash == "")) {
-        window.location.href = "index.html#start";
-    }
-    
-    initCounter();
-    
-    setTimeout("refreshCounter()", 5000);
+	window.location.href = "index.html#start";
+	
+    $("#slider").easySlider({
+        continuous: true,
+		numeric: true
+    });
+	
+	var mapContainer = $("#map");
+	
+	google.load('maps', 2, {"callback": function(){
+		if (google.loader.ClientLocation == null) {
+			mapContainer.text("The Google API was unable to resolve your IP!");
+			return;
+		}
+		else if (!google.loader.ClientLocation.latitude || !google.loader.ClientLocation.longitude) {
+			mapContainer.text("Google Maps API not supported by your browser!");
+			return;
+		}
+		
+		var latLng = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude);
+		
+		var options = {
+			center: latLng,
+			zoom: 3,
+			mapTypeControl: false,
+			navigationControlOptions: {
+				style: google.maps.NavigationControlStyle.SMALL
+			},
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		
+		var map = new google.maps.Map(mapContainer, options);
+		
+		var sbicktMapLayer = new google.maps.GGeoXml("http://sbickt.heroku.com/geotags/list.kml?coordinates[x]=" + google.loader.ClientLocation.latitude + "&coordinates[y]=" + google.loader.ClientLocation.longitude);
+		
+		map.addOverlay(sbicktMapLayer);
+	}});
 });
 </script>
 </head>
@@ -89,11 +117,11 @@ $(document).ready(function(){
                     
                         <table>
                           <tr>
-                            <td>Firstname:</td>
+                            <td>Vorname:</td>
                             <td><input type="text" size="16" id="user_firstname" name="user[firstname]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Lastname:</td>
+                            <td>Nachname:</td>
                             <td><input type="text" size="16" id="user_lastname" name="user[lastname]" class="feld"></td>
                           </tr>
                           <tr>
@@ -101,22 +129,22 @@ $(document).ready(function(){
                             <td><input type="text" size="16" id="user_nickname" name="user[nickname]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Password:</td>
+                            <td>Passwort:</td>
                             <td><input type="password" size="16" id="user_password" name="user[password]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Password confirmation:</td>
+                            <td>Passwort Wiederholung:</td>
                             <td><input type="password" size="16" id="user_password_confirmation" name="user[password_confirmation]" class="feld"></td>
                           </tr>  
                           <tr>
-                            <td>Mail:</td>
+                            <td>mail:</td>
                             <td><input type="text" size="16" id="user_email" name="user[email]" class="feld"></td>
                           </tr>   
                          
                           <tr>
                           	<td colspan="2" align="right">
 							<br />
-                          	<input type="submit" value="Signup" id="user_submit" name="commit">
+                          	<input type="submit" value="Absenden" id="user_submit" name="commit">
                         	</td>
                       	</tr>
                     </table>
@@ -133,6 +161,15 @@ $(document).ready(function(){
 
 <li id="section_wie">
 <div id="wie"></div>
+<div id="slider">
+	<ul>
+		<li><a><img src="images/easyslider/slides/01.jpg" alt="Css Template Preview" /></a></li>
+		<li><a><img src="images/easyslider/slides/02.jpg" alt="Css Template Preview" /></a></li>
+		<li><a><img src="images/easyslider/slides/03.jpg" alt="Css Template Preview" /></a></li>
+		<li><a><img src="images/easyslider/slides/04.jpg" alt="Css Template Preview" /></a></li>
+		<li><a><img src="images/easyslider/slides/05.jpg" alt="Css Template Preview" /></a></li>
+	</ul>
+</div>
 </li><!-- end section -->
 
 
@@ -140,14 +177,7 @@ $(document).ready(function(){
 <div id="wurzeln"></div>
 <div id="wurzeln_text">
 <p>
-	Despite the vast numbers of communication channels, people grow lonely without having 
-	real contact to other human beings. Since interactions get oversimplified, we lose the 
-	necessity to foster our social contacts outside the digital world.
-	 
-	S'bickt is an attempt, which lets the digital and the real world become symbiotic 
-	partners, to counteract against the mentioned progress. Our app aims at raising and 
-	satisfying the necessity for nature and outdoor activities. We offer a innovative 
-	platform for communication, activity promotion and games.
+Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 </p>
 </div>
 </li><!-- end section -->
@@ -158,11 +188,7 @@ $(document).ready(function(){
 </div><!-- end BG -->
 
 <div id="start">
-	s'bickt (austrian dialekt for "it sticks") is an augmented reality, community based 
-	app available for iOS and Android devices. It tags your messages with geodata and 
-	projects them onto the screen, when you activate the camera.
 
-	<div id="counter"></div>
 </div><!-- end start -->
 
 </div> <!-- end content-->
