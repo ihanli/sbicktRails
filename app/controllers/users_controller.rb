@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @new_user = User.new(params[:user])
     
     if @new_user.save
-      session[:user] = User.authenticate(@new_user.nickname, @new_user.password)
+      session[:user_id] = User.authenticate(@new_user.nickname, @new_user.password)
       flash[:message] = "Signup successful"
       redirect_to "/index.html#section_wo"
     else
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
   
   def login
-    if session[:user] = User.authenticate(params[:nickname], params[:password])
+    if session[:user_id] = User.authenticate(params[:nickname], params[:password])
       flash[:message] = "Login successful"
       redirect_to "/index.html#section_wo"
     else
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:user] = nil
+    session[:user_id] = nil
     flash[:message] = 'Logged out'
     redirect_to "/index.html#section_wurzeln"
   end

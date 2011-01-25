@@ -30,5 +30,6 @@ class Sbickerl < ActiveRecord::Base
   belongs_to :user
   
   validates_length_of :content, :within => 1..140
-  validates_inclusion_of :visibility, :in => %w(private protected public), :message => "visibility not allowed"
+  validates_inclusion_of :visibility, :in => %w(private protected public), :message => "invalid visibility"
+
 end

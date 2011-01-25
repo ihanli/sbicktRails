@@ -25,7 +25,5 @@
 #################################################################################
 
 class SbickerlsController < ApplicationController
-  def index
-    @sbickerls = Sbickerl.all
-  end
+
 end

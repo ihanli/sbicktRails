@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 #  protect_from_forgery
   
   def login_required
-    if session[:user]
+    if session[:user_id]
       return true
     end
     
@@ -39,6 +39,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    session[:user]
+    User.find_by_id(session[:user_id])
+  end
+  
+  def admin_rights_required
+    return if current_user.admin?
+    
+    flash[:warning] = 'You don\'t have admin rights'
+    redirect_to "/index.html#start"
+    return false
   end
 end

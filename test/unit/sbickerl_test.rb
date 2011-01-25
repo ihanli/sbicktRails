@@ -57,5 +57,4 @@ class SbickerlTest < ActiveSupport::TestCase
     assert_nil Geotag.find_by_id(geotag1.id), "geotag1 wasn't deleted"
     assert_nil Geotag.find_by_id(geotag2.id), "geotag2 wasn't deleted"
   end
-
 end

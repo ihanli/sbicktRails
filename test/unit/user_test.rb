@@ -64,9 +64,9 @@ class UserTest < ActiveSupport::TestCase
   test "authenticate a user" do
     isi = create_isi
     isi.save
-    user1 = User.find(:first, :conditions => ["nickname = ?", isi.nickname])
-    user2 = User.authenticate(isi.nickname, isi.password)
-    assert_equal user1, user2, "user wasn't authenticated"
+    user = User.find(:first, :conditions => ["nickname = ?", isi.nickname])
+    user_id = User.authenticate(isi.nickname, isi.password)
+    assert_equal user.id, user_id, "user wasn't authenticated"
   end
   
   test "shouldn't authenticate a user with a wrong password" do
