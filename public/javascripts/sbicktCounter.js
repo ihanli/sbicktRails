@@ -54,7 +54,7 @@ var refreshCounter = function() {
 				
 				intervalId = setInterval(function() {
 					currentValue = sbicktCounter.getValue();
-					if (currentValue < 50)
+					if (currentValue < currentTaget)
 						sbicktCounter.setValue(currentValue + 1);
 					else
 						clearInterval(intervalId);
