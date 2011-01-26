@@ -10,9 +10,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-# ActiveRecord::Schema.define(:version => 20110114172713) do
-
 ActiveRecord::Schema.define(:version => 20110125161827) do
+
   create_table "geotags", :force => true do |t|
     t.float    "lat"
     t.float    "lng"
@@ -31,15 +30,15 @@ ActiveRecord::Schema.define(:version => 20110125161827) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "lastname"
-    t.string   "firstname"
-    t.string   "nickname"
-    t.string   "hashed_password"
-    t.string   "email"
-    t.string   "salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "admin",           :default => false
+    t.string    "lastname"
+    t.string    "firstname"
+    t.string    "nickname"
+    t.string    "hashed_password"
+    t.string    "email"
+    t.string    "salt"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "admin",           :default => false
   end
 
 end
