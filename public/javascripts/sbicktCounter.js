@@ -27,7 +27,7 @@
 */
 
 var sbicktCounter;
-var requestURL = "http://localhost:3000/geotags/count";
+var requestURL = "http://sbickt.heroku.com/geotags/count";
 var currentTarget = 0;
 
 var initCounter = function() {
