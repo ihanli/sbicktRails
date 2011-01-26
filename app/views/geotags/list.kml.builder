@@ -6,7 +6,7 @@ xml.kml(:xmlns => "http://www.opengis.net/kml/2.2") do
           xml.name(geotag.sbickerl.user.nickname.to_s)
 	      xml.description(geotag.sbickerl.content.to_s)
 	      xml.Point {
-	        xml.coordinates(geotag.lat.to_s + "," + geotag.lng.to_s + ","  + geotag.alt.to_s)
+	        xml.coordinates(geotag.lng.to_s + "," + geotag.lat.to_s + ","  + geotag.alt.to_s)
 	     }
         }
     end
