@@ -27,7 +27,7 @@
 class Geotag < ActiveRecord::Base
   attr_accessible :lat, :lng, :alt
 
-  belongs_to :sbickerl, :dependent => :destroy, :foreign_key => "object_id"
+  has_one :sbickerl, :dependent => :destroy
   
   validates_presence_of :lat
   validates_presence_of :lng

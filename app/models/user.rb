@@ -27,7 +27,7 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  has_many :sbickerls
+  has_many :sbickerls, :dependent => :destroy
   
   validates_length_of :nickname, :within => 3..40
   validates_length_of :password, :within => 5..40
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     return unless u
     
     if User.encrypt(pass, u.salt) == u.hashed_password
-      return u
+      return u.id
     end
     
     return nil
@@ -63,8 +63,13 @@ class User < ActiveRecord::Base
     self.hashed_password = User.encrypt(@password, self.salt)
   end
   
-  def self.admin?()
+  def admin?()
     return self.admin
+  end
+  
+  def make_admin!(value)
+    self.admin = value
+    self.save
   end
 
   protected

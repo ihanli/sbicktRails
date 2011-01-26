@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  lat: 1.5
-  lng: 1.5
-  alt: 1.5
+#one:
+#  lat: 1.5
+#  lng: 1.5
+#  alt: 1.5
 
-two:
-  lat: 1.5
-  lng: 1.5
-  alt: 1.5
+#two:
+#  lat: 1.5
+#  lng: 1.5
+#  alt: 1.5

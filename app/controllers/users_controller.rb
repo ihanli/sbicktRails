@@ -25,7 +25,8 @@
 #################################################################################
 
 class UsersController < ApplicationController
-  before_filter :login_required, :only => ["show", "logout"]
+  before_filter :login_required, :only => ["show", "logout, destroy"]
+  before_filter :admin_rights_required, :only => ["index", "create"]
     
   def index
     @users = User.all
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
     @new_user = User.new(params[:user])
     
     if @new_user.save
-      session[:user] = User.authenticate(@new_user.nickname, @new_user.password)
+      session[:user_id] = User.authenticate(@new_user.nickname, @new_user.password)
       flash[:message] = "Signup successful"
       redirect_to "/index.html#section_wo"
     else
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
   end
   
   def login
-    if session[:user] = User.authenticate(params[:nickname], params[:password])
+    if session[:user_id] = User.authenticate(params[:nickname], params[:password])
       flash[:message] = "Login successful"
       redirect_to "/index.html#section_wo"
     else
@@ -63,13 +64,26 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:user] = nil
+    session[:user_id] = nil
     flash[:message] = 'Logged out'
     redirect_to "/index.html#section_wurzeln"
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to :action => :index
+    if current_user.admin?
+      if User.find_by_id(params[:id]).destroy
+        flash[:message] = 'User destroyed'
+        redirect_to :action => :index
+      else
+        flash[:warning] = 'couldn\'t destroy user'
+      end
+    else
+      if current_user.destroy
+        flash[:message] = 'Your account was deleted'
+        redirect_to "/index.html#start"
+      else
+        flash[:warning] = 'We weren\'t able to delete your account'
+      end
+    end
   end
 end

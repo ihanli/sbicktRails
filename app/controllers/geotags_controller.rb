@@ -25,6 +25,9 @@
 #################################################################################
 
 class GeotagsController < ApplicationController 
+  before_filter :admin_rights_required, :only => ["index"]
+  before_filter :login_required, :only => ["list", "new", "create", "destroy"]
+  
   def index 
     @geotags = Geotag.all
     
@@ -46,12 +49,14 @@ class GeotagsController < ApplicationController
     @new_geotag = Geotag.new
     @new_sbickerl = Sbickerl.new
   end
-
+  
   def create
     @new_geotag = Geotag.new(params[:geotag])
-    @new_sbickerl = @new_geotag.sbickerls.build(params[:sbickerl])
+    @new_geotag.sbickerl = Sbickerl.new(params[:sbickerl])
+    @new_geotag.sbickerl.user = User.find_by_id(session[:user_id])
       
     if @new_geotag.save
+      flash[:message] = "successfully created geotag and sbickerl"
       redirect_to geotags_path
     end
   end

@@ -29,6 +29,7 @@ SbicktRails::Application.routes.draw do
     collection do
       get :logout
       post :login
+      delete :destroy
     end
   end
 
