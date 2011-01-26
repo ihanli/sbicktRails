@@ -26,7 +26,7 @@
 
 class GeotagsController < ApplicationController 
   before_filter :admin_rights_required, :only => ["index"]
-  before_filter :login_required, :only => ["list", "new", "create", "destroy"]
+  before_filter :login_required, :only => ["new", "create", "destroy"]
   
   def index 
     @geotags = Geotag.all
@@ -39,7 +39,7 @@ class GeotagsController < ApplicationController
   
   def list
     @geotags = Geotag.surrounding_tags(params[:lat].to_f, params[:lng].to_f)
-  
+
     respond_to do |format|
      format.kml
     end
