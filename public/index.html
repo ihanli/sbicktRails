@@ -102,8 +102,8 @@ function initMap(lat, lng){
 
     var map = new google.maps.Map(document.getElementById("map"), options);
 
- //   var sbicktLayer = new google.maps.KmlLayer("http://sbickt.heroku.com/geotags/list.kml?coordinates[x]=" + lat + "&coordinates[y]=" + lng);
- //   sbicktLayer.setMap(map);
+    var sbicktLayer = new google.maps.KmlLayer("http://sbickt.heroku.com/geotags/list.kml?lat=" + lat + "&lng" + lng);
+    sbicktLayer.setMap(map);
 }
 
 function handleNoGeoLocation(){
