@@ -8,6 +8,6 @@ THIS YOU NEED TO KEEP.
 */
 
 ul.cd{float:left;list-style-type:none;margin:0;padding:0}
-li.t{background:url(../images/flip_counter/digits-top.png) 0 0 no-repeat;width:53px;height:39px}
-li.b{background:url(../images/flip_counter/digits-bottom.png) 0 0 no-repeat;width:53px;height:64px}
-li.s{background:url(../images/flip_counter/comma.png) 2px 75px no-repeat;width:12px;height:100px}
+li.t{background:url(../images/flip_counter/digits-top.png) 0 0 no-repeat;width:16px;height:12px}
+li.b{background:url(../images/flip_counter/digits-bottom.png) 0 0 no-repeat;width:16px;height:18px}
+li.s{background:url(../images/flip_counter/comma.png) 2px 75px no-repeat;width:2px;height:4px}

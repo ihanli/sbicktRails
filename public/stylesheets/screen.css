@@ -11,7 +11,6 @@
 
 /* Easy Slider */
 #slider ul, #slider li, #slider2 ul, #slider2 li {
-    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -25,9 +24,11 @@
      define width and height of list item (slide)
      entire slider area will adjust according to the parameters provided here
      */
-    width: 696px;
+    width: 580px;
     height: 241px;
     overflow: hidden;
+
+	
 }
 
 #prevBtn, #nextBtn, #slider1next, #slider1prev {
@@ -41,7 +42,7 @@
 }
 
 #nextBtn, #slider1next {
-    left: 696px;
+    left: 580;
 }
 
 #prevBtn a, #nextBtn a, #slider1next a, #slider1prev a {
@@ -58,7 +59,9 @@
 
 /* numeric controls */
 ol#controls {
-    margin: 1em 0;
+	margin-left:250px;
+	margin-top:10px;
+    /*margin: 1em 0;*/
     padding: 0;
     height: 28px;
 }
@@ -76,15 +79,15 @@ ol#controls li a {
     float: left;
     height: 28px;
     line-height: 28px;
-    border: 1px solid #ccc;
-    background: #DAF3F8;
-    color: #555;
+    /*border: 1px solid #ccc;*/
+    background: #1e94a1;
+    color: #fff;
     padding: 0 10px;
     text-decoration: none;
 }
 
 ol#controls li.current a {
-    background: #5DC9E1;
+    background: #154a60;
     color: #fff;
 }
 

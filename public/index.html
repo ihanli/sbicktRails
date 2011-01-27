@@ -35,7 +35,7 @@
 <title>s'bickt</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-<link rel="stylesheet" type="text/css" href="stylesheets/base.css" />
+<link rel="stylesheet" type="text/css" media="all" href="stylesheets/base.css" />
 <link rel="stylesheet" type="text/css" href="stylesheets/screen.css" />
 <link rel="stylesheet" type="text/css" href="stylesheets/counter.css" />
 
@@ -76,9 +76,9 @@ $(document).ready(function(){
 		numeric: true
     });
 	
-    initCounter();
+ //   initCounter();
 
-    setInterval("refreshCounter()", 3600);
+ //   setInterval("refreshCounter()", 3600);
 	    
     if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position){
@@ -116,72 +116,73 @@ function handleNoGeoLocation(){
 <body>
 <div id="content">
 <div id="BG">
-<ul id="contentlist">
 
-<li id="section_magauch">
+<section id="section_magauch">
 <div id="magauch"></div>
 <div id="anmelden_formular">
 <form accept-charset="UTF-8" method="POST" action="/users" name="anmelden"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="E89+xp9MS76mSpLUS5YGhFRD19XuIrnVEzj/Lmfq2dQ=" /></div>
                     
                         <table>
                           <tr>
-                            <td>Firstname:</td>
+                            <td>firstname:</td>
                             <td><input type="text" size="16" id="user_firstname" name="user[firstname]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Lastname:</td>
+                            <td>lastname:</td>
                             <td><input type="text" size="16" id="user_lastname" name="user[lastname]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Nickname:</td>
+                            <td>nickname:</td>
                             <td><input type="text" size="16" id="user_nickname" name="user[nickname]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Password:</td>
+                            <td>password:</td>
                             <td><input type="password" size="16" id="user_password" name="user[password]" class="feld"></td>
                           </tr>
                           <tr>
-                            <td>Password confirmation:</td>
+                            <td>confirm&nbsp;password:</td>
                             <td><input type="password" size="16" id="user_password_confirmation" name="user[password_confirmation]" class="feld"></td>
                           </tr>  
                           <tr>
-                            <td>Mail:</td>
+                            <td>mail:</td>
                             <td><input type="text" size="16" id="user_email" name="user[email]" class="feld"></td>
                           </tr>   
                          
                           <tr>
                           	<td colspan="2" align="right">
 							<br />
-                          	<input type="submit" value="Signup" id="user_submit" name="commit">
+                          	<input type="image" src="images/bicks_PS.png" alt="signup" id="user_submit" name="commit" title="Sign up">
+
                         	</td>
                       	</tr>
                     </table>
                    </form>
 </div> <!-- end formular -->
-</li> <!-- end section -->
+</section> <!-- end section -->
 
 
 
-<li id="section_wo">
+<section id="section_wo">
 <div id="wo"></div>
 <div id="map">karte von umgebung</div>
-</li><!-- end section -->
+</section><!-- end section -->
 
-<li id="section_wie">
+<section id="section_wie">
 <div id="wie"></div>
 <div id="slider">
 	<ul>
-		<li><a><img src="images/easyslider/slides/01.jpg" alt="Css Template Preview" /></a></li>
-		<li><a><img src="images/easyslider/slides/02.jpg" alt="Css Template Preview" /></a></li>
-		<li><a><img src="images/easyslider/slides/03.jpg" alt="Css Template Preview" /></a></li>
-		<li><a><img src="images/easyslider/slides/04.jpg" alt="Css Template Preview" /></a></li>
-		<li><a><img src="images/easyslider/slides/05.jpg" alt="Css Template Preview" /></a></li>
+		<li><a><img src="images/easyslider/slides/01.png" alt="sbickt slide" /></a></li>
+		<li><a><img src="images/easyslider/slides/02.png" alt="sbickt slide" /></a></li>
+		<li><a><img src="images/easyslider/slides/03.png" alt="sbickt slide" /></a></li>
+		<li><a><img src="images/easyslider/slides/04.png" alt="sbickt slide" /></a></li>
+		<li><a><img src="images/easyslider/slides/05.png" alt="sbickt slide" /></a></li>
+        <li><a><img src="images/easyslider/slides/06.png" alt="sbickt slide" /></a></li>
 	</ul>
 </div>
-</li><!-- end section -->
+</section><!-- end section -->
 
 
-<li id="section_wurzeln">
+<section id="section_wurzeln">
 <div id="wurzeln"></div>
 <div id="wurzeln_text">
 <p>
@@ -195,17 +196,18 @@ function handleNoGeoLocation(){
 	platform for communication, activity promotion and games.
 </p>
 </div>
-</li><!-- end section -->
+</section><!-- end section -->
 
 
-</ul>
 
 </div><!-- end BG -->
 
 <div id="start">
+	<div id="start_text">
 	s'bickt (austrian dialekt for "it sticks") is an augmented reality, community based 
 	app available for iOS and Android devices. It tags your messages with geodata and 
 	projects them onto the screen, when you activate the camera.
+    </div>
 
 	<div id="counter"></div>
 </div><!-- end start -->
@@ -215,10 +217,10 @@ function handleNoGeoLocation(){
 
 <div id="navi">
 <ul id="start_links">
-	<li><a href="#section_wurzeln">wtf ist s'bickt?</a></li>
-	<li><a href="#section_wie">wie bickt man's? </a></li>
-	<li><a href="#section_wo">wo bickt's? </a></li>
-	<li><a href="#section_magauch">will auch!</a></li>
+	<li><a href="#section_wurzeln">wtf is s'bickt?</a></li>
+	<li><a href="#section_wie">how to use? </a></li>
+	<li><a href="#section_wo">where to see? </a></li>
+	<li><a href="#section_magauch">wanna have!</a></li>
 </ul>
 </div>
 

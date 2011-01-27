@@ -37,7 +37,7 @@ var initCounter = function() {
 		if (json.status == 'ok') {
 			count = json.count;
 		}
-		
+		console.log(count);
 		sbicktCounter = new flipCounter('counter', {
 			value : count,
 			pace : 100,

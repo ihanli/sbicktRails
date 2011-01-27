@@ -63,8 +63,10 @@ td{
 	background-image:url(../images/BG.jpg);
 	width:960px;
 	height:2400px;
-	position:absolute;
-	left:0px;
+	/*position:absolute;
+	left:0px;*/
+	margin-left:0px;
+	max-width:100%;
 }
 
 
@@ -75,9 +77,9 @@ td{
 	top:0px;
 }
 #magauch{
-	background-image:url(../images/mag_head.jpg);
-	width:210px;
-	height:50px;
+	background-image:url(../images/mag_head.png);
+	width:252px;
+	height:39px;
 	position:absolute;
 	top:60px;
 	left:385px;
@@ -96,12 +98,12 @@ td{
 	top:600px;
 }
 #wo{
-	background-image:url(../images/wo_head.jpg);
-	width:200px;
+	background-image:url(../images/wo_head.png);
+	width:107px;
 	height:40px;
 	position:absolute;
-	top:150px;
-	left:515px;
+	top:160px;
+	left:520px;
 }
 #map{
 	background-color:#CCC;
@@ -118,16 +120,21 @@ td{
 #section_wie{
 	position:absolute;
 	top:1200px;
+	width:700px;
 }
 #wie{
-	background-image:url(../images/wie_head.jpg);
-	width:310px;
-	height:45px;
+	background-image:url(../images/wie_head.png);
+	width:99px;
+	height:40px;
 	position:absolute;
 	top:60px;
-	left:322px;
+	left:330px;
 }
-
+#slider{
+	margin-left:155px;
+	margin-top:120px;
+	width: 696px;
+}
 
 
 
@@ -137,17 +144,18 @@ td{
 	top:1800px;
 }
 #wurzeln{
-	background-image:url(../images/wurzeln_head.jpg);
-	width:230px;
-	height:50px;
+	background-image:url(../images/wurzeln_head.png);
+	width:173px;
+	height:40px;
 	position:absolute;
-	top:130px;
+	top:135px;
 	left:330px;
 }
 #wurzeln_text{
 	margin-top:190px;
 	margin-left:335px;
-	margin-right:60px;
+	margin-right:130px;
+	max-width:550px;
 	
 		
 	-moz-column-count: 2; 
@@ -160,19 +168,34 @@ td{
 
 
 #start{
-	background-image:url(../images/start.jpg);
-	width:410px;
-	height:335px;
+	background-image:url(../images/start.png);
+	width:649px;
+	height:355px;
 	position:absolute;
 	top:3000px;
 	left:0px;
 }
+#start_text{
+	width:300px;
+	position:absolute;
+	left:460px;
+	top:245px;
+	font-size:12px;
+	color:#999;
+}
+#counter{
+	position:absolute;
+	left:460px;
+	top:310px;
+}
+
 
 
 #navi{
+	background-color:transparent;
 	text-align:right;
 	position:fixed;
-	right:0px;
+	right:10px;
 	top:45%;
 	/*width: 100%;
 	height: 50%;
@@ -200,4 +223,32 @@ a:visited{
 	color:#999;
 }
 
+#content{
+	margin:0;
+	width:100%;
+}
 
+
+
+
+@media (max-width: 800px) {
+	
+#wurzeln_text{
+	-moz-column-count: 1; /* mozilla prefix */
+ 	-webkit-column-count: 1; /* safari prefix */
+}
+
+#content{
+	margin-left:-180px;
+}
+#map{
+	left:220px;
+}
+#magauch{
+	left:245px;
+}
+#anmelden_formular{
+	left:250px;
+}
+
+}
