@@ -25,24 +25,19 @@
 #################################################################################
 
 class GeotagsController < ApplicationController 
-  before_filter :admin_rights_required, :only => ["index"]
-  before_filter :login_required, :only => ["new", "create", "destroy"]
+  before_filter :login_required, :only => ["index", "new", "create", "destroy"]
   
   def index 
-    @geotags = Geotag.all
+    if(params[:lat] && params[:lng])
+      @geotags = Geotag.surrounding_tags(params[:lat].to_f, params[:lng].to_f)
+    else
+      @geotags = Geotag.all
+    end
     
     respond_to do |format|
      format.kml
      format.html
     end 
-  end
-  
-  def list
-    @geotags = Geotag.surrounding_tags(params[:lat].to_f, params[:lng].to_f)
-
-    respond_to do |format|
-     format.kml
-    end
   end
   
   def new
