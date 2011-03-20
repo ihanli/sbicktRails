@@ -5,11 +5,11 @@
 <ul>
   <% @geotags.each do |geotag| %>
     <li>
-      <%= geotag.x %>
-      <%= geotag.y %>
-      <%= geotag.z %>
-      <%= geotag.sbickerls %>
-      <%= link_to "edit", edit_geotag_path(geotag) %>
+      <%= geotag.lat %>
+      <%= geotag.lng %>
+      <%= geotag.alt %>
+	  <%= geotag.sbickerl.user.nickname.to_s %>
+	  <%= link_to "edit", edit_geotag_path(geotag) %>
     </li>
   <% end %>
 </ul>
