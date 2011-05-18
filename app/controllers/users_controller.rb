@@ -26,7 +26,7 @@
 
 class UsersController < ApplicationController
   before_filter :login_required, :only => ["show", "logout, destroy"]
-  before_filter :admin_rights_required, :only => ["index", "create"]
+  before_filter :admin_rights_required, :only => ["index"]
     
   def index
     @users = User.all
