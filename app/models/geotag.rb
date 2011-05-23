@@ -33,7 +33,7 @@ class Geotag < ActiveRecord::Base
   validates_presence_of :lng
   validates_presence_of :alt
   
-  def self.surrounding_tags(lat, lng)
-    return self.find(:all, :conditions => ['(lat - ? < 0.45 AND lat - ? > -0.45) AND (lng - ? < 0.45 AND lng - ? > -0.45)', lat, lat, lng, lng])
+  def self.surrounding_tags(lat, lng, user_id)
+    return self.find(:all, :include => :sbickerl, :conditions => ['(lat - ? < 0.45 AND lat - ? > -0.45) AND (lng - ? < 0.45 AND lng - ? > -0.45) AND sbickerl.user.id = ?', lat, lat, lng, lng, user_id])
   end
 end

@@ -38,7 +38,7 @@ class GeotagsController < ApplicationController
   end
   
   def list
-    @geotags = Geotag.surrounding_tags(params[:lat].to_f, params[:lng].to_f)
+    @geotags = Geotag.surrounding_tags(params[:lat].to_f, params[:lng].to_f, session[:user_id])
 
     respond_to do |format|
      format.kml
